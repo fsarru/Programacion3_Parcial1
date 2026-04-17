@@ -1,39 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Food Store - Iniciar Sesión</title>
+    <link rel="stylesheet" href="./login.css">
 </head>
-
 <body>
-    <h1> Login</h1>
+    <header>
+        <h1>Food Store</h1>
+        <h2>Iniciar Sesión</h2>
+    </header>
 
     <form id="form">
+        <fieldset>
+            <label for="email"><strong>Email:</strong></label><br>       
+            <input type="email" id="email" name="email" 
+            placeholder="tucorreo@ejemplo.com" required><br><br>
 
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="off" placeholder="example@example.com">
-        </div>
-        <div>
-            <label for="password">password</label>
-            <input type="password" id="password" name="password" autocomplete="off" placeholder="********">
-        </div>
-        <div>
-            <label for="rol">Rol</label>
-            <select name="rol" id="rol">
-                <option value="">Seleccione un rol</option>
-                <option value="client">Cliente</option>
-                <option value="admin">Admin</option>
-            </select>
-        </div>
-
-        <button type="submit">Ingresar</button>
-
-    </form>
+            <label for="password"><strong>Contraseña:</strong></label><br>       
+            <input type="password" id="password" name="password"
+            placeholder="Mínimo 6 caracteres" required><br><br>
+            <br>
+            <button type="submit">Ingresar</button>
+            
+            <p>¿No tenés cuenta? <a href='../registro/registro.html'><strong>Registrate acá</strong></a></p>
+        </fieldset>
+    </form><br>
 
     <script type="module" src="./login.ts"></script>
 </body>
-
 </html>
