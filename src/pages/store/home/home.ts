@@ -1,5 +1,5 @@
 // 1. Importaciones necesarias (Ajusta las rutas según la ubicación exacta de tus carpetas)
-import { PRODUCTS, getCategories } from "../../../utils/data";
+import { PRODUCTS, getCategories } from "../../../data/data";
 import type { Product } from "../../../types/product";
 // import { checkAuhtUser } from "../../../utils/auth"; // Descomentar cuando tengas el archivo de autenticación
 

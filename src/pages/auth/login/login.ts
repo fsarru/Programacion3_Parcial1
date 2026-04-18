@@ -50,12 +50,12 @@ form.addEventListener("submit", (e: SubmitEvent) => {
 
     localStorage.setItem("userData", JSON.stringify(userActivo));
 
-    // Dentro de src/pages/auth/login/login.ts
-if (userActivo.role === "admin") {
-    window.location.replace("/src/pages/admin/home/home.html");
-} else {
-    window.location.replace("/src/pages/client/home/home.html");
-}
+    if (userActivo.role === "admin") {
+        window.location.replace(window.location.origin + "/src/pages/admin/home/home.html");
+    } else {
+        // EL ROL CLIENTE VA A LA CARPETA STORE
+        window.location.replace(window.location.origin + "/src/pages/store/home/home.html");
+    }
   } else {
     alert("Credenciales incorrectas. Intente nuevamente.");
   }
