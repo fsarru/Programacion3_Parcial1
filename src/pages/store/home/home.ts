@@ -125,8 +125,19 @@ function addToCart(producto: Product) {
 
 // 7. Evento de inicialización: Cuando carga la página, renderizamos todo
 document.addEventListener("DOMContentLoaded", () => {
-  // Proteger ruta aquí si fuera necesario
-  // checkAuhtUser("/src/pages/auth/login/login.html", "/src/pages/store/home/home.html", "client");
+
+// --- LÓGICA PARA CERRAR SESIÓN ---
+const btnLogout = document.getElementById("btn-logout");
+
+if (btnLogout) {
+  btnLogout.addEventListener("click", () => {
+    // 1. Borramos la sesión del usuario del localStorage
+    localStorage.removeItem("userData");
+    
+    // 2. Redirigimos al login usando nuestra ruta absoluta segura
+    window.location.replace(window.location.origin + "/src/pages/auth/login/login.html");
+  });
+}
 
   renderCategories();
   renderProducts(PRODUCTS);
