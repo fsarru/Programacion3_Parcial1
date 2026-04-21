@@ -17,7 +17,7 @@ Este proyecto es una aplicación dinámica de tienda virtual desarrollada con **
 
 Siguiendo las consignas del parcial, la estructura se organiza de la siguiente manera:
 
-
+```text
 src/
 ├── data/
 │   └── data.ts          # Fuente de datos (PRODUCTS y Categorías)
@@ -30,7 +30,7 @@ src/
     └── store/           # Vistas del cliente
         ├── home/        # Catálogo principal
         └── cart/        # Vista detallada del carrito
-
+```
 
 ## 🛠️ Instalación y Uso
 1. Clonar el repositorio: 
