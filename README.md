@@ -29,18 +29,17 @@ src/
 ```
 
 ## 🛠️ Instalación y Uso
-1. Clonar el repositorio: 
-git clone 
+<ins>**1. Clonar el repositorio: git clone**</ins>
 ```text 
-[https://github.com/TU_USUARIO/Programacion3_Parcial1.git](https://github.com/TU_USUARIO/Programacion3_Parcial1.git) 
+https://github.com/TU_USUARIO/Programacion3_Parcial1.git
 ```
 
-2. Instalar dependencias:
+<ins>**2. Instalar dependencias:**</ins>
 ```text 
 pnpm install 
 ```
 
-3. Iniciar el servidor de desarrollo:
+<ins>**3. Iniciar el servidor de desarrollo:**</ins>
 ```text
 pnpm dev 
 ```
