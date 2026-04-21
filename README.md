@@ -30,19 +30,26 @@ src/
 
 ## 🛠️ Instalación y Uso
 1. Clonar el repositorio: 
-git clone [https://github.com/TU_USUARIO/Programacion3_Parcial1.git](https://github.com/TU_USUARIO/Programacion3_Parcial1.git)
+git clone 
+```text 
+[https://github.com/TU_USUARIO/Programacion3_Parcial1.git](https://github.com/TU_USUARIO/Programacion3_Parcial1.git) 
+```
 
 2. Instalar dependencias:
-pnpm install
+```text 
+pnpm install 
+```
 
 3. Iniciar el servidor de desarrollo:
-pnpm dev
+```text
+pnpm dev 
+```
 
 ## 🛠️ Tecnologías Utilizadas
-Vite - Frontend Tooling
+- Vite - Frontend Tooling
 
-TypeScript - Tipado estático
+- TypeScript - Tipado estático
 
-Google Fonts - Tipografía Fredoka
+- Google Fonts - Tipografía Fredoka
 
-Git/GitHub - Control de versiones
+- Git/GitHub - Control de versiones
