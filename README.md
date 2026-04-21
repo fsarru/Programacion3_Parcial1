@@ -1,24 +1,31 @@
 # 🍔 Food Store - Programación III (Parcial 1)
 
-Este proyecto es una aplicación dinámica de tienda virtual desarrollada con **Vite**, **TypeScript** y **Sass/CSS**, enfocada en la gestión de un catálogo de productos y un carrito de compras con persistencia de datos.
+Este proyecto es una aplicación dinámica de tienda virtual desarrollada con **Vite** y **TypeScript**, enfocada en la gestión de un catálogo de productos y un carrito de compras con persistencia de datos mediante `localStorage`.
 
 ## 🚀 Características Principales
 
-- **Gestión de Estado**: Uso de `localStorage` para mantener los productos en el carrito incluso al recargar la página.
-- **Seguridad y Ruteo**: Implementación de protección de rutas para evitar el acceso a la tienda o al carrito sin una sesión activa.
+- **Gestión de Estado**: Uso de `localStorage` para mantener los productos en el carrito incluso al recargar la página (Persistencia).
 - **UX/UI Dinámica**:
-  - Feedback visual al agregar productos (animación del botón sin alertas bloqueantes).
+  - Feedback visual al agregar productos.
   - Filtros por categorías en tiempo real.
-  - Buscador de productos inteligente.
-  - Cabecera y navegación unificada con diseño profesional.
-- **Tipografía**: Uso de 'Fredoka' para una estética moderna y amigable.
+  - Buscador de productos por nombre.
+  - Cabecera y navegación unificada entre el inicio y el carrito.
+  
+- **Estética**: Uso de la tipografía 'Fredoka' para un diseño moderno, amigable y corporativo en tonos naranjas.
 
 ## 📁 Estructura del Proyecto
 
-Siguiendo las consignas del parcial, la estructura se organiza de la siguiente manera:
-
 ```text
-src/ ├── pages/ │ └── store/ │ ├── home/ │ │ ├── home.html ← catálogo de productos │ │ └── home.ts ← lógica: render, búsqueda, filtros │ └── cart/ │ ├── cart.html ← vista del carrito │ └── cart.ts ← lógica: render, cantidades, total ├── types/ │ ├── product.ts ← interfaces Product y CartItem │ └── categoria.ts ← interface Icategoria └── data/ └── data.ts ← PRODUCTS y getCategories()
+src/
+├── data/
+│   └── data.ts          # Fuente de datos (Array de productos y categorías)
+├── types/
+│   ├── product.ts       # Definición de interfaz de Producto y CartItem
+│   └── categoria.ts     # Interfaz para categorías
+└── pages/
+    └── store/           # Vistas principales de la tienda
+        ├── home/        # Catálogo (home.html y home.ts)
+        └── cart/        # Carrito de compras (cart.html y cart.ts)
 ```
 
 ## 🛠️ Instalación y Uso
@@ -30,11 +37,6 @@ pnpm install
 
 3. Iniciar el servidor de desarrollo:
 pnpm dev
-
-## 👤 Usuarios de Prueba
-Para testear la protección de rutas y el ruteo dinámico:
-
-Cliente: cliente@cliente.com / password123
 
 ## 🛠️ Tecnologías Utilizadas
 Vite - Frontend Tooling
