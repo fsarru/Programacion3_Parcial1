@@ -18,18 +18,7 @@ Este proyecto es una aplicación dinámica de tienda virtual desarrollada con **
 Siguiendo las consignas del parcial, la estructura se organiza de la siguiente manera:
 
 ```text
-src/
-├── data/
-│   └── data.ts          # Fuente de datos (PRODUCTS y Categorías)
-├── types/
-│   ├── product.ts       # Interfaces de Producto y CartItem
-│   └── categoria.ts     # Interface ICategory
-└── pages/
-    ├── auth/            # Login y Registro
-    ├── admin/           # Panel de administración (en desarrollo)
-    └── store/           # Vistas del cliente
-        ├── home/        # Catálogo principal
-        └── cart/        # Vista detallada del carrito
+src/ ├── pages/ │ └── store/ │ ├── home/ │ │ ├── home.html ← catálogo de productos │ │ └── home.ts ← lógica: render, búsqueda, filtros │ └── cart/ │ ├── cart.html ← vista del carrito │ └── cart.ts ← lógica: render, cantidades, total ├── types/ │ ├── product.ts ← interfaces Product y CartItem │ └── categoria.ts ← interface Icategoria └── data/ └── data.ts ← PRODUCTS y getCategories()
 ```
 
 ## 🛠️ Instalación y Uso

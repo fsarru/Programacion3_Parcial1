@@ -1,43 +1,16 @@
 import type { Product } from "../../../types/product";
 
-// 1. PROTECCIÓN DE RUTA
-function checkSession() {
-    const sesion = localStorage.getItem("userData");
-    if (!sesion) {
-        window.location.replace("/src/pages/auth/login/login.html");
-        return false;
-    }
-    
-    try {
-        const user = JSON.parse(sesion);
-        if (user.role !== "client") {
-            window.location.replace("/src/pages/auth/login/login.html");
-            return false;
-        }
-        return true;
-    } catch (e) {
-        localStorage.removeItem("userData");
-        window.location.replace("/src/pages/auth/login/login.html");
-        return false;
-    }
-}
-
-if (!checkSession()) {
-    throw new Error("Acceso denegado.");
-}
-
 // Interfaz local para el ítem con cantidad
 interface CartItem extends Product {
     cantidad: number;
 }
 
-// 2. REFERENCIAS AL DOM
+// REFERENCIAS AL DOM
 const cartContainer = document.getElementById("cart-container") as HTMLDivElement;
 const totalCarrito = document.getElementById("cart-total") as HTMLSpanElement;
 const btnVaciar = document.getElementById("btn-empty") as HTMLButtonElement;
-const btnLogout = document.getElementById("btn-logout") as HTMLButtonElement;
 
-// 3. LÓGICA DE ACTUALIZACIÓN DE CANTIDADES (Punto 2 y 3)
+// LÓGICA DE ACTUALIZACIÓN DE CANTIDADES
 const cambiarCantidad = (id: number, delta: number) => {
     const carritoRaw = localStorage.getItem("cart");
     let carrito: CartItem[] = carritoRaw ? JSON.parse(carritoRaw) : [];
@@ -47,20 +20,16 @@ const cambiarCantidad = (id: number, delta: number) => {
     if (index !== -1) {
         carrito[index].cantidad += delta;
 
-        // Si la cantidad llega a 0 o menos, eliminamos el producto
         if (carrito[index].cantidad <= 0) {
             carrito.splice(index, 1);
         }
 
-        // Guardamos en LocalStorage (Persistencia al refrescar)
         localStorage.setItem("cart", JSON.stringify(carrito));
-        
-        // Volvemos a dibujar
         renderizarCarrito();
     }
 };
 
-// 4. LÓGICA DE RENDERIZADO
+// LÓGICA DE RENDERIZADO
 const renderizarCarrito = () => {
     if (!cartContainer || !totalCarrito) return;
 
@@ -94,9 +63,9 @@ const renderizarCarrito = () => {
                 <small style="color: #666;">Precio Unitario: $${item.precio}</small>
             </div>
             <div style="flex: 1; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                <button class="btn-restar" data-id="${item.id}" style="padding: 2px 8px; cursor: pointer; border-radius: 4px; border: 1px solid #ddd; background: #fff;">-</button>
-                <span style="min-width: 20px; font-weight: bold;">${item.cantidad}</span>
-                <button class="btn-sumar" data-id="${item.id}" style="padding: 2px 8px; cursor: pointer; border-radius: 4px; border: 1px solid #ddd; background: #fff;">+</button>
+                <button class="btn-restar" data-id="${item.id}" style="padding: 2px 10px; cursor: pointer; border-radius: 6px; border: 2px solid #e67e22; background: white; color: #e67e22; font-weight: bold;">-</button>
+                <span style="min-width: 25px; font-weight: bold; font-size: 1.1rem;">${item.cantidad}</span>
+                <button class="btn-sumar" data-id="${item.id}" style="padding: 2px 10px; cursor: pointer; border-radius: 6px; border: 2px solid #e67e22; background: white; color: #e67e22; font-weight: bold;">+</button>
             </div>
             <div style="flex: 1; text-align: right; font-weight: bold; color: #27ae60;">
                 $${subtotal.toFixed(2)}
@@ -108,7 +77,6 @@ const renderizarCarrito = () => {
 
     totalCarrito.textContent = totalAcumulado.toFixed(2);
 
-    // Asignar eventos a los botones de + y - recién creados
     document.querySelectorAll(".btn-sumar").forEach(btn => {
         btn.addEventListener("click", (e) => {
             const id = Number((e.currentTarget as HTMLButtonElement).dataset.id);
@@ -124,7 +92,7 @@ const renderizarCarrito = () => {
     });
 };
 
-// 5. FUNCIONES DE BOTONES GENERALES
+// FUNCIONES DE BOTONES GENERALES
 btnVaciar?.addEventListener("click", () => {
     if (confirm("¿Estás seguro de que quieres vaciar el carrito?")) {
         localStorage.removeItem("cart");
@@ -132,11 +100,5 @@ btnVaciar?.addEventListener("click", () => {
     }
 });
 
-btnLogout?.addEventListener("click", () => {
-    localStorage.removeItem("userData");
-    window.location.replace("/src/pages/auth/login/login.html");
-});
-
-// 6. INICIALIZACIÓN
-// Ejecutamos el renderizado apenas carga la página
+// INICIALIZACIÓN
 document.addEventListener("DOMContentLoaded", renderizarCarrito);

@@ -32,13 +32,13 @@ function renderProducts(productosA_Mostrar: Product[]) {
     card.style.textAlign = "center";
     card.style.backgroundColor = "#fff";
 
-    // Nota: El ID del botón es importante para capturarlo luego
+    // CORRECCIÓN 1: Color naranja (#e67e22) y sin doble punto y coma
     card.innerHTML = `
       <img src="/${producto.imagen}" alt="${producto.nombre}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 5px;">
       <h3 style="margin: 10px 0; font-size: 1.2rem;">${producto.nombre}</h3>
       <p style="color: #666; font-size: 14px; height: 40px; overflow: hidden;">${producto.descripcion}</p>
-      <p style="font-weight: bold; font-size: 1.2rem; color: #ff6347;;">$${producto.precio}</p>
-      <button id="btn-add-${producto.id}" class="btn-agregar" style="background-color: #ff6347;; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; transition: all 0.3s ease;">
+      <p style="font-weight: bold; font-size: 1.2rem; color: #e67e22;">$${producto.precio}</p>
+      <button id="btn-add-${producto.id}" class="btn-agregar" style="background-color: #e67e22; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; transition: all 0.3s ease;">
         Añadir al Carrito
       </button>
     `;
@@ -46,7 +46,6 @@ function renderProducts(productosA_Mostrar: Product[]) {
     listaProductos.appendChild(card);
 
     const btnAdd = document.getElementById(`btn-add-${producto.id}`) as HTMLButtonElement;
-    // Pasamos el botón mismo (btnAdd) a la función addToCart
     btnAdd?.addEventListener("click", () => addToCart(producto, btnAdd));
   });
 }
@@ -91,12 +90,13 @@ searchInput.addEventListener("input", (e) => {
   renderProducts(filtrados);
 });
 
-// 6. Lógica del Carrito (Punto 4: Efecto visual en lugar de alert)
+// 6. Lógica del Carrito con Efecto visual
 function addToCart(producto: Product, boton: HTMLButtonElement) {
   const cartStorage = localStorage.getItem("cart");
   let cart: CartItem[] = cartStorage ? JSON.parse(cartStorage) : [];
 
-  const index = cart.findIndex(item => item.id === producto.id);
+  // CORRECCIÓN 3: Tipado explícito de (item: CartItem)
+  const index = cart.findIndex((item: CartItem) => item.id === producto.id);
 
   if (index !== -1) {
     cart[index].cantidad += 1;
@@ -107,16 +107,15 @@ function addToCart(producto: Product, boton: HTMLButtonElement) {
   localStorage.setItem("cart", JSON.stringify(cart));
   
   // --- EFECTO VISUAL ---
-  const colorOriginal = "#3498db";
+  // CORRECCIÓN 2: El color original de retorno ahora es el naranja correcto
+  const colorOriginal = "#e67e22";
   const textoOriginal = "Añadir al Carrito";
 
-  // Cambiamos estado del botón
-  boton.style.backgroundColor = "#2ecc71"; // Verde
-  boton.style.boxShadow = "0 0 10px #2ecc71"; // Sombreado brillante
+  boton.style.backgroundColor = "#2ecc71"; // Verde éxito
+  boton.style.boxShadow = "0 0 10px #2ecc71";
   boton.textContent = "¡Agregado!";
-  boton.disabled = true; // Deshabilitamos un segundo para evitar doble clic accidental
+  boton.disabled = true; 
 
-  // Revertimos el efecto después de 800ms
   setTimeout(() => {
     boton.style.backgroundColor = colorOriginal;
     boton.style.boxShadow = "none";
@@ -127,15 +126,6 @@ function addToCart(producto: Product, boton: HTMLButtonElement) {
 
 // 7. Evento de inicialización
 document.addEventListener("DOMContentLoaded", () => {
-  // --- LÓGICA PARA CERRAR SESIÓN ---
-  const btnLogout = document.getElementById("btn-logout");
-  if (btnLogout) {
-    btnLogout.addEventListener("click", () => {
-      localStorage.removeItem("userData");
-      window.location.replace(window.location.origin + "/src/pages/auth/login/login.html");
-    });
-  }
-
   renderCategories();
   renderProducts(PRODUCTS);
 });
