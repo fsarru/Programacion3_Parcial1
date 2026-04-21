@@ -17,7 +17,7 @@ Este proyecto es una aplicación dinámica de tienda virtual desarrollada con **
 
 Siguiendo las consignas del parcial, la estructura se organiza de la siguiente manera:
 
-```text
+
 src/
 ├── data/
 │   └── data.ts          # Fuente de datos (PRODUCTS y Categorías)
@@ -32,7 +32,7 @@ src/
         └── cart/        # Vista detallada del carrito
 
 
-        🛠️ Instalación y Uso
+## 🛠️ Instalación y Uso
 1. Clonar el repositorio: 
 git clone [https://github.com/TU_USUARIO/Programacion3_Parcial1.git](https://github.com/TU_USUARIO/Programacion3_Parcial1.git)
 
@@ -42,12 +42,12 @@ pnpm install
 3. Iniciar el servidor de desarrollo:
 pnpm dev
 
-👤 Usuarios de Prueba
+## 👤 Usuarios de Prueba
 Para testear la protección de rutas y el ruteo dinámico:
 
 Cliente: cliente@cliente.com / password123
 
-🛠️ Tecnologías Utilizadas
+## 🛠️ Tecnologías Utilizadas
 Vite - Frontend Tooling
 
 TypeScript - Tipado estático
