@@ -62,7 +62,7 @@ const renderizarCarrito = () => {
                 <h4 style="margin: 0;">${item.nombre}</h4>
                 <small style="color: #666;">Precio Unitario: $${item.precio}</small>
             </div>
-            <div style="flex: 1; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <div style="flex: 1; text-align: center; display: flex; align-items: center; justify-content: center; gap: 20px;">
                 <button class="btn-restar" data-id="${item.id}" style="padding: 2px 10px; cursor: pointer; border-radius: 6px; border: 2px solid #e67e22; background: white; color: #e67e22; font-weight: bold;">-</button>
                 <span style="min-width: 25px; font-weight: bold; font-size: 1.1rem;">${item.cantidad}</span>
                 <button class="btn-sumar" data-id="${item.id}" style="padding: 2px 10px; cursor: pointer; border-radius: 6px; border: 2px solid #e67e22; background: white; color: #e67e22; font-weight: bold;">+</button>

@@ -52,3 +52,11 @@ pnpm dev
 - Google Fonts - Tipografía Fredoka
 
 - Git/GitHub - Control de versiones
+
+## 🔗 Links útiles
+
+**Video explicativo** 
+- https://youtu.be/dgVbPWqcqRg
+
+**Repositorio**
+- https://github.com/fsarru/Programacion3_Parcial1
