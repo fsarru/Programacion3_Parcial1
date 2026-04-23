@@ -1,9 +1,8 @@
-// 1. Importaciones necesarias
 import { PRODUCTS, getCategories } from "../../../data/data";
 import type { Product } from "../../../types/product";
 import type { ICategory } from "../../../types/categoria";
 
-// 2. Referencias a los elementos del DOM
+// DOM
 const listaProductos = document.getElementById("lista-productos") as HTMLDivElement;
 const searchInput = document.getElementById("search-input") as HTMLInputElement;
 const listaCategorias = document.getElementById("lista-categorias") as HTMLDivElement;
@@ -13,7 +12,6 @@ interface CartItem extends Product {
   cantidad: number;
 }
 
-// 3. Función para renderizar las tarjetas de productos
 function renderProducts(productosA_Mostrar: Product[]) {
   listaProductos.innerHTML = "";
 
@@ -32,7 +30,6 @@ function renderProducts(productosA_Mostrar: Product[]) {
     card.style.textAlign = "center";
     card.style.backgroundColor = "#fff";
 
-    // CORRECCIÓN 1: Color naranja (#e67e22) y sin doble punto y coma
     card.innerHTML = `
       <img src="/${producto.imagen}" alt="${producto.nombre}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 5px;">
       <h3 style="margin: 10px 0; font-size: 1.2rem;">${producto.nombre}</h3>
@@ -50,7 +47,6 @@ function renderProducts(productosA_Mostrar: Product[]) {
   });
 }
 
-// 4. Función para renderizar el menú lateral de categorías
 function renderCategories() {
   const categorias = getCategories();
   listaCategorias.innerHTML = "";
@@ -81,7 +77,7 @@ function renderCategories() {
   });
 }
 
-// 5. Lógica del Buscador
+// Buscador
 searchInput.addEventListener("input", (e) => {
   const query = (e.target as HTMLInputElement).value.toLowerCase();
   const filtrados = PRODUCTS.filter(p => 
@@ -90,12 +86,11 @@ searchInput.addEventListener("input", (e) => {
   renderProducts(filtrados);
 });
 
-// 6. Lógica del Carrito con Efecto visual
+// Carrito
 function addToCart(producto: Product, boton: HTMLButtonElement) {
   const cartStorage = localStorage.getItem("cart");
   let cart: CartItem[] = cartStorage ? JSON.parse(cartStorage) : [];
 
-  // CORRECCIÓN 3: Tipado explícito de (item: CartItem)
   const index = cart.findIndex((item: CartItem) => item.id === producto.id);
 
   if (index !== -1) {
@@ -106,12 +101,10 @@ function addToCart(producto: Product, boton: HTMLButtonElement) {
 
   localStorage.setItem("cart", JSON.stringify(cart));
   
-  // --- EFECTO VISUAL ---
-  // CORRECCIÓN 2: El color original de retorno ahora es el naranja correcto
   const colorOriginal = "#e67e22";
   const textoOriginal = "Añadir al Carrito";
 
-  boton.style.backgroundColor = "#2ecc71"; // Verde éxito
+  boton.style.backgroundColor = "#2ecc71";
   boton.style.boxShadow = "0 0 10px #2ecc71";
   boton.textContent = "¡Agregado!";
   boton.disabled = true; 
@@ -124,7 +117,7 @@ function addToCart(producto: Product, boton: HTMLButtonElement) {
   }, 800);
 }
 
-// 7. Evento de inicialización
+
 document.addEventListener("DOMContentLoaded", () => {
   renderCategories();
   renderProducts(PRODUCTS);

@@ -1,4 +1,3 @@
-// src/types/product.ts
 import type { ICategory } from "./categoria";
 
 export interface Product {

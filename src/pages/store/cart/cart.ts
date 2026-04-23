@@ -5,7 +5,7 @@ interface CartItem extends Product {
     cantidad: number;
 }
 
-// REFERENCIAS AL DOM
+// DOM
 const cartContainer = document.getElementById("cart-container") as HTMLDivElement;
 const totalCarrito = document.getElementById("cart-total") as HTMLSpanElement;
 const btnVaciar = document.getElementById("btn-empty") as HTMLButtonElement;
@@ -29,7 +29,7 @@ const cambiarCantidad = (id: number, delta: number) => {
     }
 };
 
-// LÓGICA DE RENDERIZADO
+// RENDERIZADO
 const renderizarCarrito = () => {
     if (!cartContainer || !totalCarrito) return;
 

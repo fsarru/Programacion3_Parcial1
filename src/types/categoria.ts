@@ -1,4 +1,3 @@
-// src/types/categoria.ts
 export interface ICategory {
   id: number;
   nombre: string;
